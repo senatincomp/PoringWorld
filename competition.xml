@@ -17,7 +17,7 @@
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
-				<link>Jay3.png</link>
+				<link>Jay3.jpg</link>
             </item>
             <item>
                 <name>zeny</name>
@@ -32,7 +32,7 @@
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
-				<link>Jay6.png</link>
+				<link>Jay6.jpg</link>
             </item>
         </earnings>
     </player>
@@ -48,7 +48,7 @@
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
-				<link>Jun2.png</link>
+				<link>Jun2.jpg</link>
             </item>
             <item>
                 <name>zeny</name>
@@ -58,12 +58,13 @@
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
-				<link>Jun4.png</link>
+				<link>Jun4.jpg</link>
             </item>
         </earnings>
     </player>
 
 </competition>
+
 
 
 
