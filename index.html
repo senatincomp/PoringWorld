@@ -13,13 +13,11 @@
         }
         
         body {
-            background-color: #0a0e17;
-            color: #ffffff;
+            background-color: #0f172a;
+            color: #f8fafc;
             min-height: 100vh;
             padding: 20px;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(28, 58, 173, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(200, 80, 192, 0.1) 0%, transparent 20%);
+            background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
         }
         
         .container {
@@ -31,39 +29,37 @@
             text-align: center;
             padding: 40px 20px;
             margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .year-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            color: #0a0e17;
-            padding: 8px 25px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 10px 30px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
         }
         
         h1 {
-            font-size: 3.2rem;
-            background: linear-gradient(to right, #00d4ff, #0099ff, #7a00ff);
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #60a5fa, #8b5cf6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 10px;
-            text-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+            margin-bottom: 15px;
         }
         
         .subtitle {
-            font-size: 1.3rem;
-            color: #a0b3e0;
+            font-size: 1.2rem;
+            color: #cbd5e1;
             margin-bottom: 25px;
             max-width: 800px;
             margin-left: auto;
@@ -71,43 +67,43 @@
             line-height: 1.6;
         }
         
-        .month-tag {
-            display: flex;
+        .data-source {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .month-icon {
-            font-size: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .month-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 15px;
         }
         
         .competition-status {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             padding: 12px 30px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 12px;
             font-weight: 600;
             margin-top: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         
         .dashboard {
@@ -123,43 +119,22 @@
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
         }
         
         .player-card {
-            background: rgba(16, 22, 36, 0.8);
+            background: rgba(30, 41, 59, 0.8);
             border-radius: 20px;
             padding: 30px;
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .player-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .jayson-card::before {
-            background: linear-gradient(to right, #00d4ff, #0099ff);
-        }
-        
-        .jhun-card::before {
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            transition: transform 0.3s ease;
+            min-height: 400px;
         }
         
         .player-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
         }
         
         .player-header {
@@ -167,30 +142,30 @@
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         }
         
         .player-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            margin-right: 25px;
+            font-size: 2rem;
+            margin-right: 20px;
             font-weight: 800;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .jayson-icon {
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            color: #0a0e17;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
         }
         
         .jhun-icon {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            color: #0a0e17;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
         }
         
         .player-info {
@@ -198,59 +173,53 @@
         }
         
         .player-name {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 5px;
         }
         
         .jayson-name {
-            background: linear-gradient(to right, #00d4ff, #0099ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #60a5fa;
         }
         
         .jhun-name {
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #f87171;
         }
         
         .player-tagline {
-            color: #a0b3e0;
-            font-size: 1rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
         
         .total-display {
             text-align: center;
             margin: 30px 0;
             padding: 25px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(15, 23, 42, 0.5);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.05);
         }
         
         .total-label {
-            font-size: 1.2rem;
-            color: #a0b3e0;
+            font-size: 1.1rem;
+            color: #94a3b8;
             margin-bottom: 10px;
             letter-spacing: 1px;
         }
         
         .total-amount {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
         }
         
         .jayson-total {
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            color: #60a5fa;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
         }
         
         .jhun-total {
-            color: #ff7e5f;
-            text-shadow: 0 0 20px rgba(255, 126, 95, 0.5);
+            color: #f87171;
+            text-shadow: 0 0 20px rgba(248, 113, 113, 0.3);
         }
         
         .earnings-section {
@@ -258,8 +227,8 @@
         }
         
         .section-title {
-            font-size: 1.4rem;
-            color: #a0b3e0;
+            font-size: 1.3rem;
+            color: #94a3b8;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -267,409 +236,626 @@
         }
         
         .section-icon {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         
         .earnings-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         
         .earning-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            border-left: 5px solid;
-            transition: transform 0.2s ease, background 0.3s ease;
+            padding: 15px 20px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid;
+            transition: background 0.3s ease;
         }
         
         .earning-item:hover {
-            transform: translateX(5px);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(15, 23, 42, 0.8);
         }
         
         .jayson-item {
-            border-left-color: #00d4ff;
+            border-left-color: #3b82f6;
         }
         
         .jhun-item {
-            border-left-color: #ff7e5f;
+            border-left-color: #ef4444;
         }
         
         .item-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
         
         .item-amount {
-            font-size: 1.4rem;
-            font-weight: 800;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
         
         .jayson-amount {
-            color: #00d4ff;
+            color: #60a5fa;
         }
         
         .jhun-amount {
-            color: #ff7e5f;
+            color: #f87171;
         }
         
-        .comparison-section {
-            background: rgba(16, 22, 36, 0.8);
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #94a3b8;
+        }
+        
+        .loader {
+            border: 4px solid rgba(148, 163, 184, 0.1);
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats-section {
+            background: rgba(30, 41, 59, 0.8);
             border-radius: 20px;
             padding: 40px;
             margin-top: 40px;
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
         }
         
-        .comparison-title {
-            font-size: 2rem;
+        .stats-title {
+            font-size: 1.8rem;
             text-align: center;
             margin-bottom: 40px;
-            background: linear-gradient(to right, #00d4ff, #7a00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #cbd5e1;
         }
         
-        .comparison-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
-        .comparison-item {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-            padding: 25px;
-            background: rgba(0, 0, 0, 0.3);
+        .stat-card {
+            background: rgba(15, 23, 42, 0.5);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .comparison-label {
-            font-size: 1.3rem;
-            color: #a0b3e0;
-            margin-bottom: 15px;
-        }
-        
-        .comparison-value {
-            font-size: 2.5rem;
-            font-weight: 900;
-        }
-        
-        .difference-jayson {
-            color: #00d4ff;
-        }
-        
-        .difference-jhun {
-            color: #ff7e5f;
-        }
-        
-        .difference-amount {
-            color: #ffffff;
-            font-size: 3rem;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-        
-        .days-remaining {
+            padding: 25px;
             text-align: center;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.05);
         }
         
-        .days-label {
-            font-size: 1.3rem;
-            color: #a0b3e0;
+        .stat-label {
+            font-size: 1.1rem;
+            color: #94a3b8;
             margin-bottom: 10px;
         }
         
-        .days-count {
-            font-size: 3.5rem;
+        .stat-value {
+            font-size: 2.2rem;
             font-weight: 900;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        }
+        
+        .jayson-stat {
+            color: #60a5fa;
+        }
+        
+        .jhun-stat {
+            color: #f87171;
+        }
+        
+        .neutral-stat {
+            color: #cbd5e1;
+        }
+        
+        .date-info {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .date-label {
+            font-size: 1.2rem;
+            color: #94a3b8;
             margin-bottom: 15px;
         }
         
+        .current-date {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .days-remaining-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .days-icon {
+            font-size: 2.5rem;
+        }
+        
+        .days-text {
+            text-align: left;
+        }
+        
+        .days-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+        
+        .days-count {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #10b981;
+        }
+        
         .month-progress {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            margin: 20px auto 30px;
-            max-width: 600px;
+            height: 8px;
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 4px;
+            margin: 30px auto;
+            max-width: 500px;
             overflow: hidden;
         }
         
         .progress-bar {
             height: 100%;
-            background: linear-gradient(to right, #00d4ff, #7a00ff);
-            width: 50%;
-            border-radius: 5px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            border-radius: 4px;
         }
         
         .progress-text {
-            color: #a0b3e0;
-            font-size: 1.1rem;
+            color: #94a3b8;
+            font-size: 1rem;
         }
         
         .note {
             text-align: center;
-            color: #a0b3e0;
-            font-style: italic;
-            margin-top: 30px;
+            color: #94a3b8;
+            margin-top: 40px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(15, 23, 42, 0.5);
             border-radius: 10px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            border: 1px solid rgba(148, 163, 184, 0.1);
         }
         
         footer {
             text-align: center;
             margin-top: 60px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #a0b3e0;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            color: #94a3b8;
             font-size: 0.9rem;
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            margin: 20px 0;
+        }
+        
+        .refresh-button {
+            padding: 12px 25px;
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .refresh-button:hover {
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="header-content">
-                <div class="year-badge">DECEMBER 2025</div>
-                <h1>MONEY EARNING COMPETITION</h1>
-                <p class="subtitle">Jayson and Jhun compete to see who can earn the most money during December 2025. The competition is still ongoing with days left to earn more!</p>
-                
-                <div class="month-tag">
-                    <div class="month-icon">🎯</div>
-                    <div class="month-text">DECEMBER CHALLENGE</div>
-                    <div class="month-icon">💰</div>
-                </div>
-                
-                <div class="competition-status">LIVE COMPETITION • IN PROGRESS • NO WINNER DECLARED YET</div>
+            <div class="year-badge">DECEMBER 2025 COMPETITION</div>
+            <h1>Money Earning Challenge</h1>
+            <p class="subtitle">Jayson and Jhun compete throughout December 2025 to see who can earn the most money. Current standings are loaded from external XML data.</p>
+            
+            <div class="data-source">
+                <span>📡 Data Source:</span>
+                <a href="https://senatincomp.github.io/PoringWorld/competition.xml" target="_blank" style="color: #60a5fa; text-decoration: none;">
+                    https://senatincomp.github.io/PoringWorld/competition.xml
+                </a>
+            </div>
+            
+            <div class="competition-status">
+                <div class="live-dot"></div>
+                <span>LIVE COMPETITION • DATA LOADED FROM EXTERNAL XML</span>
             </div>
         </header>
         
         <div class="dashboard">
             <!-- Jayson's Card -->
-            <div class="player-card jayson-card">
+            <div class="player-card">
                 <div class="player-header">
                     <div class="player-icon jayson-icon">J</div>
                     <div class="player-info">
                         <h2 class="player-name jayson-name">JAYSON</h2>
-                        <p class="player-tagline">Current earnings for December 2025</p>
+                        <p class="player-tagline">December 2025 earnings from XML</p>
                     </div>
                 </div>
                 
-                <div class="total-display">
-                    <div class="total-label">CURRENT TOTAL EARNINGS</div>
-                    <div class="total-amount jayson-total" id="jayson-total">2,860</div>
-                </div>
-                
-                <div class="earnings-section">
-                    <h3 class="section-title">
-                        <span class="section-icon">📊</span>
-                        December 2025 Earnings
-                    </h3>
-                    <div class="earnings-list" id="jayson-earnings">
-                        <!-- Earnings populated by JavaScript -->
-                    </div>
+                <div id="jayson-content" class="loading">
+                    <div class="loader"></div>
+                    <p>Loading Jayson's data from XML...</p>
                 </div>
             </div>
             
             <!-- Jhun's Card -->
-            <div class="player-card jhun-card">
+            <div class="player-card">
                 <div class="player-header">
                     <div class="player-icon jhun-icon">J</div>
                     <div class="player-info">
                         <h2 class="player-name jhun-name">JHUN</h2>
-                        <p class="player-tagline">Current earnings for December 2025</p>
+                        <p class="player-tagline">December 2025 earnings from XML</p>
                     </div>
                 </div>
                 
-                <div class="total-display">
-                    <div class="total-label">CURRENT TOTAL EARNINGS</div>
-                    <div class="total-amount jhun-total" id="jhun-total">2,140</div>
-                </div>
-                
-                <div class="earnings-section">
-                    <h3 class="section-title">
-                        <span class="section-icon">📊</span>
-                        December 2025 Earnings
-                    </h3>
-                    <div class="earnings-list" id="jhun-earnings">
-                        <!-- Earnings populated by JavaScript -->
-                    </div>
+                <div id="jhun-content" class="loading">
+                    <div class="loader"></div>
+                    <p>Loading Jhun's data from XML...</p>
                 </div>
             </div>
         </div>
         
-        <div class="comparison-section">
-            <h2 class="comparison-title">COMPETITION ANALYSIS</h2>
+        <div id="stats-section" class="stats-section" style="display: none;">
+            <h2 class="stats-title">Competition Statistics</h2>
             
-            <div class="comparison-content">
-                <div class="comparison-item">
-                    <div class="comparison-label">Jayson's Lead</div>
-                    <div class="comparison-value difference-jayson" id="jayson-lead">720</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Jayson's Lead</div>
+                    <div class="stat-value jayson-stat" id="jayson-lead">0</div>
                 </div>
                 
-                <div class="comparison-item">
-                    <div class="comparison-label">Total Combined</div>
-                    <div class="comparison-value difference-amount" id="combined-total">5,000</div>
+                <div class="stat-card">
+                    <div class="stat-label">Items Count (Jayson)</div>
+                    <div class="stat-value jayson-stat" id="jayson-count">0</div>
                 </div>
                 
-                <div class="comparison-item">
-                    <div class="comparison-label">Jhun Needs To Catch Up</div>
-                    <div class="comparison-value difference-jhun" id="jhun-needed">720</div>
+                <div class="stat-card">
+                    <div class="stat-label">Combined Total</div>
+                    <div class="stat-value neutral-stat" id="combined-total">0</div>
                 </div>
+                
+                <div class="stat-card">
+                    <div class="stat-label">Items Count (Jhun)</div>
+                    <div class="stat-value jhun-stat" id="jhun-count">0</div>
+                </div>
+            </div>
+            
+            <div class="date-info">
+                <div class="date-label">COMPETITION TIMELINE</div>
+                <div class="current-date" id="current-date"></div>
+                
+                <div class="days-remaining-container">
+                    <div class="days-icon">📅</div>
+                    <div class="days-text">
+                        <div class="days-label">DAYS REMAINING IN DECEMBER 2025</div>
+                        <div class="days-count" id="days-remaining">0</div>
+                    </div>
+                </div>
+                
+                <div class="month-progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div class="progress-text" id="progress-text"></div>
             </div>
         </div>
         
-        <div class="days-remaining">
-            <div class="days-label">DAYS REMAINING IN DECEMBER 2025</div>
-            <div class="days-count" id="days-remaining">15</div>
-            
-            <div class="month-progress">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            
-            <div class="progress-text" id="progress-text">Month is approximately 50% complete</div>
+        <div id="error-message" class="error-message" style="display: none;">
+            <h3>⚠️ Error Loading Data</h3>
+            <p>Failed to load competition data from the XML file. Please check:</p>
+            <ul style="text-align: left; max-width: 500px; margin: 20px auto;">
+                <li>The XML file is accessible at: https://senatincomp.github.io/PoringWorld/competition.xml</li>
+                <li>Your internet connection is working</li>
+                <li>The XML file contains valid data</li>
+            </ul>
+            <button class="refresh-button" onclick="loadXMLData()">Try Again</button>
         </div>
         
         <div class="note">
-            <p>⚠️ This competition is still ongoing. The winner will be determined on December 31, 2025 after all earnings have been finalized. Current standings are updated as of today.</p>
-            <p>Both competitors still have time to increase their earnings before the end of the month.</p>
+            <p>⚠️ This competition is active throughout December 2025. The winner will be determined on December 31, 2025 based on total earnings.</p>
+            <p>All data is loaded from external XML file. You can update the competition data by editing the XML file without changing this HTML.</p>
         </div>
         
         <footer>
             <p>December 2025 Money Competition • Jayson vs Jhun</p>
-            <p>Competition Period: December 1, 2025 - December 31, 2025 • Winner will be announced on January 1, 2026</p>
+            <p>Competition Period: December 1, 2025 - December 31, 2025 • Data Source: External XML</p>
         </footer>
     </div>
 
     <script>
-        // Jayson's earnings data for December 2025
-        const jaysonEarnings = [
-            { name: "WolfCard", amount: 250 },
-            { name: "FabreCard", amount: 150 },
-            { name: "Boost", amount: 750 },
-            { name: "zeny", amount: 660 },
-            { name: "zeny", amount: 300 },
-            { name: "BOost", amount: 750 }
-        ];
+        // XML data URL
+        const XML_DATA_URL = 'https://senatincomp.github.io/PoringWorld/competition.xml';
         
-        // Jhun's earnings data for December 2025
-        const jhunEarnings = [
-            { name: "Formal Suit", amount: 300 },
-            { name: "Boosting", amount: 750 },
-            { name: "zeny", amount: 340 },
-            { name: "Boosting", amount: 750 }
-        ];
-        
-        // Function to calculate total earnings
-        function calculateTotal(earningsArray) {
-            return earningsArray.reduce((total, item) => total + item.amount, 0);
+        // Function to fetch and parse XML data
+        async function loadXMLData() {
+            try {
+                // Show loading state
+                document.getElementById('stats-section').style.display = 'none';
+                document.getElementById('error-message').style.display = 'none';
+                
+                // Fetch XML data
+                const response = await fetch(XML_DATA_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch XML: ${response.status} ${response.statusText}`);
+                }
+                
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                // Check for XML parsing errors
+                const parserError = xmlDoc.querySelector('parsererror');
+                if (parserError) {
+                    throw new Error('Invalid XML format');
+                }
+                
+                // Parse competition data
+                const competition = xmlDoc.querySelector('competition');
+                const year = competition.getAttribute('year');
+                const month = competition.getAttribute('month');
+                
+                // Get Jayson's data
+                const jaysonElement = xmlDoc.querySelector('player[id="jayson"]');
+                const jaysonName = jaysonElement.querySelector('name').textContent;
+                const jaysonItems = jaysonElement.querySelectorAll('earnings item');
+                
+                // Get Jhun's data
+                const jhunElement = xmlDoc.querySelector('player[id="jhun"]');
+                const jhunName = jhunElement.querySelector('name').textContent;
+                const jhunItems = jhunElement.querySelectorAll('earnings item');
+                
+                // Process Jayson's earnings
+                const jaysonEarnings = [];
+                let jaysonTotal = 0;
+                
+                jaysonItems.forEach((item, index) => {
+                    const name = item.querySelector('name').textContent;
+                    const amount = parseInt(item.querySelector('amount').textContent);
+                    jaysonEarnings.push({ name, amount });
+                    jaysonTotal += amount;
+                });
+                
+                // Process Jhun's earnings
+                const jhunEarnings = [];
+                let jhunTotal = 0;
+                
+                jhunItems.forEach((item, index) => {
+                    const name = item.querySelector('name').textContent;
+                    const amount = parseInt(item.querySelector('amount').textContent);
+                    jhunEarnings.push({ name, amount });
+                    jhunTotal += amount;
+                });
+                
+                // Display the data
+                displayPlayerData('jayson', jaysonName, jaysonEarnings, jaysonTotal);
+                displayPlayerData('jhun', jhunName, jhunEarnings, jhunTotal);
+                updateCompetitionStats(jaysonTotal, jhunTotal, jaysonEarnings.length, jhunEarnings.length);
+                calculateDecember2025Progress();
+                
+                // Show stats section
+                document.getElementById('stats-section').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error loading XML data:', error);
+                document.getElementById('error-message').style.display = 'block';
+                
+                // Show fallback data if XML fails
+                displayFallbackData();
+            }
         }
         
-        // Function to display earnings
-        function displayEarnings(playerId, earningsArray, isJayson) {
-            const earningsContainer = document.getElementById(playerId);
-            earningsContainer.innerHTML = '';
+        // Function to display player data
+        function displayPlayerData(playerId, playerName, earningsArray, total) {
+            const playerContent = document.getElementById(`${playerId}-content`);
             
+            // Create HTML for player card
+            let html = `
+                <div class="total-display">
+                    <div class="total-label">CURRENT TOTAL</div>
+                    <div class="total-amount ${playerId}-total">${total}</div>
+                </div>
+                
+                <div class="earnings-section">
+                    <h3 class="section-title">
+                        <span class="section-icon">💰</span>
+                        Earnings Breakdown (${earningsArray.length} items)
+                    </h3>
+                    <div class="earnings-list" id="${playerId}-earnings">
+            `;
+            
+            // Add each earning item
             earningsArray.forEach(item => {
-                const earningDiv = document.createElement('div');
-                earningDiv.className = `earning-item ${isJayson ? 'jayson-item' : 'jhun-item'}`;
-                earningDiv.innerHTML = `
-                    <span class="item-name">${item.name}</span>
-                    <span class="item-amount ${isJayson ? 'jayson-amount' : 'jhun-amount'}">${item.amount}</span>
+                html += `
+                    <div class="earning-item ${playerId}-item">
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-amount ${playerId}-amount">${item.amount}</span>
+                    </div>
                 `;
-                earningsContainer.appendChild(earningDiv);
             });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            playerContent.innerHTML = html;
+            playerContent.classList.remove('loading');
         }
         
-        // Function to update competition analysis
-        function updateCompetitionAnalysis(jaysonTotal, jhunTotal) {
+        // Function to display fallback data if XML fails
+        function displayFallbackData() {
+            // Fallback Jayson data
+            const jaysonFallback = [
+                { name: "Unable to Fetch", amount: Nun }
+            ];
+            
+            // Fallback Jhun data
+            const jhunFallback = [
+                { name: "Unable to Fetch", amount: Nun }
+            ];
+            
+            const jaysonTotal = jaysonFallback.reduce((sum, item) => sum + item.amount, 0);
+            const jhunTotal = jhunFallback.reduce((sum, item) => sum + item.amount, 0);
+            
+            displayPlayerData('jayson', 'Jayson', jaysonFallback, jaysonTotal);
+            displayPlayerData('jhun', 'Jhun', jhunFallback, jhunTotal);
+            updateCompetitionStats(jaysonTotal, jhunTotal, jaysonFallback.length, jhunFallback.length);
+            calculateDecember2025Progress();
+            
+            document.getElementById('stats-section').style.display = 'block';
+        }
+        
+        // Function to update competition statistics
+        function updateCompetitionStats(jaysonTotal, jhunTotal, jaysonCount, jhunCount) {
             const jaysonLead = jaysonTotal - jhunTotal;
             const combinedTotal = jaysonTotal + jhunTotal;
             
             document.getElementById('jayson-lead').textContent = jaysonLead;
+            document.getElementById('jayson-count').textContent = jaysonCount;
+            document.getElementById('jhun-count').textContent = jhunCount;
             document.getElementById('combined-total').textContent = combinedTotal;
-            document.getElementById('jhun-needed').textContent = jaysonLead;
             
             // Update progress text
             const progressText = document.getElementById('progress-text');
             if (jaysonLead > 0) {
-                progressText.textContent = `Jayson is leading by ${jaysonLead}. Jhun needs to earn ${jaysonLead} more to tie.`;
+                progressText.textContent = `Jayson is leading by ${jaysonLead}. Jhun needs ${jaysonLead} more to tie.`;
             } else if (jaysonLead < 0) {
-                progressText.textContent = `Jhun is leading by ${-jaysonLead}. Jayson needs to earn ${-jaysonLead} more to tie.`;
+                progressText.textContent = `Jhun is leading by ${-jaysonLead}. Jayson needs ${-jaysonLead} more to tie.`;
             } else {
-                progressText.textContent = "It's a tie! Both players have earned the same amount so far.";
+                progressText.textContent = "It's a tie! Both players have the same total.";
             }
         }
         
-        // Function to calculate days remaining in December 2025
+        // Function to calculate real-time December 2025 progress
         function calculateDecember2025Progress() {
-            // December 2025 has 31 days
-            const totalDays = 31;
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth(); // 0-indexed (0 = January)
             
-            // For demonstration, let's assume today is December 16, 2025
-            // In a real application, you would use: const today = new Date();
-            const today = new Date(2025, 11, 16); // December 16, 2025 (month is 0-indexed)
+            // Check if we're in December 2025
+            let targetYear = 2025;
+            let targetMonth = 11; // December (0-indexed)
             
-            // Calculate days remaining
-            const lastDay = new Date(2025, 11, 31); // December 31, 2025
-            const diffTime = lastDay - today;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            // If we're past December 2025, use December 2025 as reference
+            if (currentYear > 2025 || (currentYear === 2025 && currentMonth > 11)) {
+                // Use December 2025 as completed
+                targetYear = 2025;
+                targetMonth = 11;
+            }
+            // If we're before December 2025, use current date as start of competition
+            else if (currentYear < 2025 || (currentYear === 2025 && currentMonth < 11)) {
+                // Use current date as starting point
+                targetYear = currentYear;
+                targetMonth = currentMonth;
+            }
             
-            // Calculate progress percentage
-            const dayOfMonth = today.getDate();
-            const progressPercent = (dayOfMonth / totalDays) * 100;
+            // Calculate days in December 2025
+            const daysInDecember2025 = 31;
+            
+            // Calculate today's date
+            const currentDate = today.getDate();
+            const currentMonthName = today.toLocaleString('default', { month: 'long' });
+            const currentYearFull = today.getFullYear();
+            
+            // Display current date
+            document.getElementById('current-date').textContent = 
+                `${currentMonthName} ${currentDate}, ${currentYearFull}`;
+            
+            // Calculate days remaining in December 2025
+            let daysRemaining = 0;
+            let progressPercent = 0;
+            
+            if (currentYear === 2025 && currentMonth === 11) {
+                // We're in December 2025
+                daysRemaining = daysInDecember2025 - currentDate;
+                progressPercent = (currentDate / daysInDecember2025) * 100;
+            } else if (currentYear > 2025 || (currentYear === 2025 && currentMonth > 11)) {
+                // Past December 2025
+                daysRemaining = 0;
+                progressPercent = 100;
+            } else {
+                // Before December 2025
+                // Calculate days from today to December 1, 2025
+                const dec1_2025 = new Date(2025, 11, 1); // December 1, 2025
+                const timeDiff = dec1_2025 - today;
+                daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) + 31;
+                progressPercent = 0;
+            }
             
             // Update display
-            document.getElementById('days-remaining').textContent = diffDays;
+            document.getElementById('days-remaining').textContent = daysRemaining;
             document.getElementById('progress-bar').style.width = `${progressPercent}%`;
             
-            return { daysRemaining: diffDays, progressPercent };
+            return { 
+                daysRemaining, 
+                progressPercent, 
+                currentDate: `${currentMonthName} ${currentDate}, ${currentYearFull}` 
+            };
+        }
+        
+        // Function to refresh data
+        function refreshData() {
+            loadXMLData();
+        }
+        
+        // Add refresh button to header
+        function addRefreshButton() {
+            const header = document.querySelector('header');
+            const refreshBtn = document.createElement('button');
+            refreshBtn.className = 'refresh-button';
+            refreshBtn.innerHTML = '🔄 Refresh Data';
+            refreshBtn.onclick = refreshData;
+            refreshBtn.style.marginTop = '10px';
+            header.appendChild(refreshBtn);
         }
         
         // Initialize the page
-        function init() {
-            // Calculate totals
-            const jaysonTotal = calculateTotal(jaysonEarnings);
-            const jhunTotal = calculateTotal(jhunEarnings);
-            
-            // Display totals
-            document.getElementById('jayson-total').textContent = jaysonTotal;
-            document.getElementById('jhun-total').textContent = jhunTotal;
-            
-            // Display earnings
-            displayEarnings('jayson-earnings', jaysonEarnings, true);
-            displayEarnings('jhun-earnings', jhunEarnings, false);
-            
-            // Update competition analysis
-            updateCompetitionAnalysis(jaysonTotal, jhunTotal);
-            
-            // Calculate and display December 2025 progress
-            calculateDecember2025Progress();
-        }
-        
-        // Run the initialization when the page loads
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadXMLData();
+            addRefreshButton();
+        });
     </script>
 </body>
 </html>
