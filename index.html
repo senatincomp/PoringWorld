@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Money Earning Competition: Jayson vs Jhun</title>
+    <title>December 2025 Money Competition: Jayson vs Jhun</title>
     <style>
         * {
             margin: 0;
@@ -13,286 +13,557 @@
         }
         
         body {
-            background-color: #f5f7fa;
-            color: #333;
+            background-color: #0a0e17;
+            color: #ffffff;
+            min-height: 100vh;
             padding: 20px;
-            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(28, 58, 173, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(200, 80, 192, 0.1) 0%, transparent 20%);
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
         }
         
         header {
-            background: linear-gradient(to right, #2c3e50, #4a6491);
-            color: white;
             text-align: center;
-            padding: 25px 20px;
-            border-bottom: 5px solid #f1c40f;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #0a0e17;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 3.2rem;
+            background: linear-gradient(to right, #00d4ff, #0099ff, #7a00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
         }
         
         .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            color: #a0b3e0;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
         
-        .competition-info {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 25px;
-            background-color: #f8f9fa;
-            border-bottom: 2px solid #eaeaea;
-        }
-        
-        .player-section {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
-            gap: 30px;
-        }
-        
-        .player {
-            flex: 1;
-            min-width: 300px;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
-        
-        .player:hover {
-            transform: translateY(-5px);
-        }
-        
-        .player-jayson {
-            border-top: 6px solid #3498db;
-            background-color: #f0f8ff;
-        }
-        
-        .player-jhun {
-            border-top: 6px solid #e74c3c;
-            background-color: #fff0f0;
-        }
-        
-        .player-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px dashed #ddd;
+        .month-tag {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        .player-jayson .player-name {
-            color: #2980b9;
+        .month-icon {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
         }
         
-        .player-jhun .player-name {
-            color: #c0392b;
+        .month-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .competition-status {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .player-card {
+            background: rgba(16, 22, 36, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .jayson-card::before {
+            background: linear-gradient(to right, #00d4ff, #0099ff);
+        }
+        
+        .jhun-card::before {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+        
+        .player-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .player-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .player-icon {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .earnings-list {
-            list-style-type: none;
-            margin-bottom: 25px;
-        }
-        
-        .earnings-list li {
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            background-color: white;
-            border-radius: 8px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid #2ecc71;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-right: 25px;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .player-jayson .earnings-list li {
-            border-left-color: #3498db;
+        .jayson-icon {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            color: #0a0e17;
         }
         
-        .player-jhun .earnings-list li {
-            border-left-color: #e74c3c;
+        .jhun-icon {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #0a0e17;
         }
         
-        .item-name {
-            font-weight: 600;
+        .player-info {
+            flex-grow: 1;
         }
         
-        .item-amount {
-            font-weight: 700;
-            color: #27ae60;
+        .player-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
         }
         
-        .total-section {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
+        .jayson-name {
+            background: linear-gradient(to right, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .jhun-name {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .player-tagline {
+            color: #a0b3e0;
+            font-size: 1rem;
+        }
+        
+        .total-display {
             text-align: center;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-            margin-top: 10px;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .total-label {
             font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            color: #a0b3e0;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
         
         .total-amount {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
         }
         
-        .player-jayson .total-amount {
-            color: #2980b9;
+        .jayson-total {
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
         
-        .player-jhun .total-amount {
-            color: #c0392b;
+        .jhun-total {
+            color: #ff7e5f;
+            text-shadow: 0 0 20px rgba(255, 126, 95, 0.5);
         }
         
-        .result-section {
-            padding: 30px;
-            text-align: center;
-            background-color: #f8f9fa;
-            border-top: 2px solid #eaeaea;
+        .earnings-section {
+            margin-top: 30px;
         }
         
-        .winner-card {
-            display: inline-block;
-            padding: 25px 40px;
+        .section-title {
+            font-size: 1.4rem;
+            color: #a0b3e0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            font-size: 1.6rem;
+        }
+        
+        .earnings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .earning-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            background: linear-gradient(to right, #27ae60, #2ecc71);
-            color: white;
-            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
-            margin-top: 10px;
+            border-left: 5px solid;
+            transition: transform 0.2s ease, background 0.3s ease;
         }
         
-        .winner-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .earning-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .jayson-item {
+            border-left-color: #00d4ff;
+        }
+        
+        .jhun-item {
+            border-left-color: #ff7e5f;
+        }
+        
+        .item-name {
+            font-size: 1.2rem;
             font-weight: 600;
         }
         
-        .winner-name {
-            font-size: 2.5rem;
+        .item-amount {
+            font-size: 1.4rem;
             font-weight: 800;
-            margin-bottom: 5px;
         }
         
-        .difference {
+        .jayson-amount {
+            color: #00d4ff;
+        }
+        
+        .jhun-amount {
+            color: #ff7e5f;
+        }
+        
+        .comparison-section {
+            background: rgba(16, 22, 36, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #00d4ff, #7a00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .comparison-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .comparison-item {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .comparison-label {
             font-size: 1.3rem;
-            opacity: 0.9;
+            color: #a0b3e0;
+            margin-bottom: 15px;
+        }
+        
+        .comparison-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        
+        .difference-jayson {
+            color: #00d4ff;
+        }
+        
+        .difference-jhun {
+            color: #ff7e5f;
+        }
+        
+        .difference-amount {
+            color: #ffffff;
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .days-remaining {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .days-label {
+            font-size: 1.3rem;
+            color: #a0b3e0;
+            margin-bottom: 10px;
+        }
+        
+        .days-count {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .month-progress {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 20px auto 30px;
+            max-width: 600px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #00d4ff, #7a00ff);
+            width: 50%;
+            border-radius: 5px;
+        }
+        
+        .progress-text {
+            color: #a0b3e0;
+            font-size: 1.1rem;
+        }
+        
+        .note {
+            text-align: center;
+            color: #a0b3e0;
+            font-style: italic;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0b3e0;
             font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            background-color: #f8f9fa;
-        }
-        
-        @media (max-width: 768px) {
-            .player-section {
-                flex-direction: column;
-            }
-            
-            .player {
-                min-width: 100%;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>💰 Money Earning Competition</h1>
-            <p class="subtitle">Jayson vs Jhun - Who earned more this month?</p>
+            <div class="header-content">
+                <div class="year-badge">DECEMBER 2025</div>
+                <h1>MONEY EARNING COMPETITION</h1>
+                <p class="subtitle">Jayson and Jhun compete to see who can earn the most money during December 2025. The competition is still ongoing with days left to earn more!</p>
+                
+                <div class="month-tag">
+                    <div class="month-icon">🎯</div>
+                    <div class="month-text">DECEMBER CHALLENGE</div>
+                    <div class="month-icon">💰</div>
+                </div>
+                
+                <div class="competition-status">LIVE COMPETITION • IN PROGRESS • NO WINNER DECLARED YET</div>
+            </div>
         </header>
         
-        <div class="competition-info">
-            <div>
-                <h3>📅 Competition Period: 1 Month</h3>
-                <p>Each player records their earnings from various sources</p>
-            </div>
-            <div>
-                <h3>🏆 Winner: Highest Total Earnings</h3>
-                <p>All amounts are in currency units</p>
-            </div>
-        </div>
-        
-        <div class="player-section">
-            <!-- Jayson's Earnings -->
-            <div class="player player-jayson">
-                <h2 class="player-name">
-                    <span class="player-icon">👤</span> Jayson's Earnings
-                </h2>
+        <div class="dashboard">
+            <!-- Jayson's Card -->
+            <div class="player-card jayson-card">
+                <div class="player-header">
+                    <div class="player-icon jayson-icon">J</div>
+                    <div class="player-info">
+                        <h2 class="player-name jayson-name">JAYSON</h2>
+                        <p class="player-tagline">Current earnings for December 2025</p>
+                    </div>
+                </div>
                 
-                <ul class="earnings-list" id="jayson-earnings">
-                    <!-- Earnings will be populated by JavaScript -->
-                </ul>
+                <div class="total-display">
+                    <div class="total-label">CURRENT TOTAL EARNINGS</div>
+                    <div class="total-amount jayson-total" id="jayson-total">2,860</div>
+                </div>
                 
-                <div class="total-section">
-                    <div class="total-label">Jayson's Total Earnings</div>
-                    <div class="total-amount" id="jayson-total">0</div>
+                <div class="earnings-section">
+                    <h3 class="section-title">
+                        <span class="section-icon">📊</span>
+                        December 2025 Earnings
+                    </h3>
+                    <div class="earnings-list" id="jayson-earnings">
+                        <!-- Earnings populated by JavaScript -->
+                    </div>
                 </div>
             </div>
             
-            <!-- Jhun's Earnings -->
-            <div class="player player-jhun">
-                <h2 class="player-name">
-                    <span class="player-icon">👤</span> Jhun's Earnings
-                </h2>
+            <!-- Jhun's Card -->
+            <div class="player-card jhun-card">
+                <div class="player-header">
+                    <div class="player-icon jhun-icon">J</div>
+                    <div class="player-info">
+                        <h2 class="player-name jhun-name">JHUN</h2>
+                        <p class="player-tagline">Current earnings for December 2025</p>
+                    </div>
+                </div>
                 
-                <ul class="earnings-list" id="jhun-earnings">
-                    <!-- Earnings will be populated by JavaScript -->
-                </ul>
+                <div class="total-display">
+                    <div class="total-label">CURRENT TOTAL EARNINGS</div>
+                    <div class="total-amount jhun-total" id="jhun-total">2,140</div>
+                </div>
                 
-                <div class="total-section">
-                    <div class="total-label">Jhun's Total Earnings</div>
-                    <div class="total-amount" id="jhun-total">0</div>
+                <div class="earnings-section">
+                    <h3 class="section-title">
+                        <span class="section-icon">📊</span>
+                        December 2025 Earnings
+                    </h3>
+                    <div class="earnings-list" id="jhun-earnings">
+                        <!-- Earnings populated by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="result-section">
-            <h2>🏆 Competition Result</h2>
-            <div id="winner-display">
-                <!-- Winner will be displayed here -->
+        <div class="comparison-section">
+            <h2 class="comparison-title">COMPETITION ANALYSIS</h2>
+            
+            <div class="comparison-content">
+                <div class="comparison-item">
+                    <div class="comparison-label">Jayson's Lead</div>
+                    <div class="comparison-value difference-jayson" id="jayson-lead">720</div>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="comparison-label">Total Combined</div>
+                    <div class="comparison-value difference-amount" id="combined-total">5,000</div>
+                </div>
+                
+                <div class="comparison-item">
+                    <div class="comparison-label">Jhun Needs To Catch Up</div>
+                    <div class="comparison-value difference-jhun" id="jhun-needed">720</div>
+                </div>
             </div>
         </div>
         
+        <div class="days-remaining">
+            <div class="days-label">DAYS REMAINING IN DECEMBER 2025</div>
+            <div class="days-count" id="days-remaining">15</div>
+            
+            <div class="month-progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="progress-text" id="progress-text">Month is approximately 50% complete</div>
+        </div>
+        
+        <div class="note">
+            <p>⚠️ This competition is still ongoing. The winner will be determined on December 31, 2025 after all earnings have been finalized. Current standings are updated as of today.</p>
+            <p>Both competitors still have time to increase their earnings before the end of the month.</p>
+        </div>
+        
         <footer>
-            <p>Money Earning Competition &copy; 2023 | All earnings are recorded for the month</p>
+            <p>December 2025 Money Competition • Jayson vs Jhun</p>
+            <p>Competition Period: December 1, 2025 - December 31, 2025 • Winner will be announced on January 1, 2026</p>
         </footer>
     </div>
 
     <script>
-        // Jayson's earnings data
+        // Jayson's earnings data for December 2025
         const jaysonEarnings = [
             { name: "WolfCard", amount: 250 },
             { name: "FabreCard", amount: 150 },
@@ -302,7 +573,7 @@
             { name: "BOost", amount: 750 }
         ];
         
-        // Jhun's earnings data
+        // Jhun's earnings data for December 2025
         const jhunEarnings = [
             { name: "Formal Suit", amount: 300 },
             { name: "Boosting", amount: 750 },
@@ -310,65 +581,74 @@
             { name: "Boosting", amount: 750 }
         ];
         
-        // Function to display earnings in the list
-        function displayEarnings(playerId, earningsArray) {
-            const earningsList = document.getElementById(playerId);
-            earningsList.innerHTML = '';
-            
-            earningsArray.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <span class="item-name">${item.name}</span>
-                    <span class="item-amount">${item.amount}</span>
-                `;
-                earningsList.appendChild(li);
-            });
-        }
-        
         // Function to calculate total earnings
         function calculateTotal(earningsArray) {
             return earningsArray.reduce((total, item) => total + item.amount, 0);
         }
         
-        // Function to determine and display the winner
-        function determineWinner(jaysonTotal, jhunTotal) {
-            const winnerDisplay = document.getElementById('winner-display');
+        // Function to display earnings
+        function displayEarnings(playerId, earningsArray, isJayson) {
+            const earningsContainer = document.getElementById(playerId);
+            earningsContainer.innerHTML = '';
             
-            if (jaysonTotal > jhunTotal) {
-                const difference = jaysonTotal - jhunTotal;
-                winnerDisplay.innerHTML = `
-                    <div class="winner-card">
-                        <div class="winner-title">🏆 WINNER 🏆</div>
-                        <div class="winner-name">JAYSON</div>
-                        <div class="difference">Won by ${difference} currency units</div>
-                    </div>
+            earningsArray.forEach(item => {
+                const earningDiv = document.createElement('div');
+                earningDiv.className = `earning-item ${isJayson ? 'jayson-item' : 'jhun-item'}`;
+                earningDiv.innerHTML = `
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-amount ${isJayson ? 'jayson-amount' : 'jhun-amount'}">${item.amount}</span>
                 `;
-            } else if (jhunTotal > jaysonTotal) {
-                const difference = jhunTotal - jaysonTotal;
-                winnerDisplay.innerHTML = `
-                    <div class="winner-card">
-                        <div class="winner-title">🏆 WINNER 🏆</div>
-                        <div class="winner-name">JHUN</div>
-                        <div class="difference">Won by ${difference} currency units</div>
-                    </div>
-                `;
+                earningsContainer.appendChild(earningDiv);
+            });
+        }
+        
+        // Function to update competition analysis
+        function updateCompetitionAnalysis(jaysonTotal, jhunTotal) {
+            const jaysonLead = jaysonTotal - jhunTotal;
+            const combinedTotal = jaysonTotal + jhunTotal;
+            
+            document.getElementById('jayson-lead').textContent = jaysonLead;
+            document.getElementById('combined-total').textContent = combinedTotal;
+            document.getElementById('jhun-needed').textContent = jaysonLead;
+            
+            // Update progress text
+            const progressText = document.getElementById('progress-text');
+            if (jaysonLead > 0) {
+                progressText.textContent = `Jayson is leading by ${jaysonLead}. Jhun needs to earn ${jaysonLead} more to tie.`;
+            } else if (jaysonLead < 0) {
+                progressText.textContent = `Jhun is leading by ${-jaysonLead}. Jayson needs to earn ${-jaysonLead} more to tie.`;
             } else {
-                winnerDisplay.innerHTML = `
-                    <div class="winner-card">
-                        <div class="winner-title">🤝 IT'S A TIE! 🤝</div>
-                        <div class="winner-name">BOTH PLAYERS</div>
-                        <div class="difference">Both earned ${jaysonTotal} currency units</div>
-                    </div>
-                `;
+                progressText.textContent = "It's a tie! Both players have earned the same amount so far.";
             }
+        }
+        
+        // Function to calculate days remaining in December 2025
+        function calculateDecember2025Progress() {
+            // December 2025 has 31 days
+            const totalDays = 31;
+            
+            // For demonstration, let's assume today is December 16, 2025
+            // In a real application, you would use: const today = new Date();
+            const today = new Date(2025, 11, 16); // December 16, 2025 (month is 0-indexed)
+            
+            // Calculate days remaining
+            const lastDay = new Date(2025, 11, 31); // December 31, 2025
+            const diffTime = lastDay - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            // Calculate progress percentage
+            const dayOfMonth = today.getDate();
+            const progressPercent = (dayOfMonth / totalDays) * 100;
+            
+            // Update display
+            document.getElementById('days-remaining').textContent = diffDays;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            
+            return { daysRemaining: diffDays, progressPercent };
         }
         
         // Initialize the page
         function init() {
-            // Display earnings for both players
-            displayEarnings('jayson-earnings', jaysonEarnings);
-            displayEarnings('jhun-earnings', jhunEarnings);
-            
             // Calculate totals
             const jaysonTotal = calculateTotal(jaysonEarnings);
             const jhunTotal = calculateTotal(jhunEarnings);
@@ -377,8 +657,15 @@
             document.getElementById('jayson-total').textContent = jaysonTotal;
             document.getElementById('jhun-total').textContent = jhunTotal;
             
-            // Determine and display the winner
-            determineWinner(jaysonTotal, jhunTotal);
+            // Display earnings
+            displayEarnings('jayson-earnings', jaysonEarnings, true);
+            displayEarnings('jhun-earnings', jhunEarnings, false);
+            
+            // Update competition analysis
+            updateCompetitionAnalysis(jaysonTotal, jhunTotal);
+            
+            // Calculate and display December 2025 progress
+            calculateDecember2025Progress();
         }
         
         // Run the initialization when the page loads
