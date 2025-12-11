@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<competition year="2025" month="December">
+    <player id="jayson">
+        <name>Jayson</name>
+        <earnings>
+            <item>
+                <name>WolfCard</name>
+                <amount>250</amount>
+            </item>
+            <item>
+                <name>FabreCard</name>
+                <amount>150</amount>
+            </item>
+            <item>
+                <name>Boost</name>
+                <amount>750</amount>
+            </item>
+            <item>
+                <name>zeny</name>
+                <amount>660</amount>
+            </item>
+            <item>
+                <name>zeny</name>
+                <amount>300</amount>
+            </item>
+            <item>
+                <name>BOost</name>
+                <amount>750</amount>
+            </item>
+        </earnings>
+    </player>
+    <player id="jhun">
+        <name>Jhun</name>
+        <earnings>
+            <item>
+                <name>Formal Suit</name>
+                <amount>300</amount>
+            </item>
+            <item>
+                <name>Boosting</name>
+                <amount>750</amount>
+            </item>
+            <item>
+                <name>zeny</name>
+                <amount>340</amount>
+            </item>
+            <item>
+                <name>Boosting</name>
+                <amount>750</amount>
+            </item>
+        </earnings>
+    </player>
+</competition>
