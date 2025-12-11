@@ -7,7 +7,6 @@
                 <name>WolfCard</name>
                 <amount>250</amount>
 				<link>Jay1.png</link>
-				<link>Jay4.png</link>
             </item>
             <item>
                 <name>FabreCard</name>
@@ -59,4 +58,5 @@
     </player>
 
 </competition>
+
 
