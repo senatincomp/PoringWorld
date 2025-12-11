@@ -2,6 +2,7 @@
 <competition year="2025" month="December">
     <player id="jayson">
         <name>Jayson</name>
+		 <profile>Jay.jpg</profile>
         <earnings>
             <item>
                 <name>WolfCard</name>
@@ -37,6 +38,7 @@
     </player>
     <player id="jhun">
         <name>Jhun</name>
+		 <profile>Jhun.jpg</profile>
         <earnings>
             <item>
                 <name>Formal Suit</name>
@@ -58,5 +60,6 @@
     </player>
 
 </competition>
+
 
 
