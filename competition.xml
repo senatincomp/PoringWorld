@@ -6,26 +6,32 @@
             <item>
                 <name>WolfCard</name>
                 <amount>250</amount>
+		<link>Jay1.png</link>
             </item>
             <item>
                 <name>FabreCard</name>
                 <amount>150</amount>
+		<link>Jay2.png</link>
             </item>
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
+		<link></link>
             </item>
             <item>
                 <name>zeny</name>
                 <amount>660</amount>
+		<link>Jay4.png</link>
             </item>
             <item>
                 <name>zeny</name>
                 <amount>300</amount>
+		<link>Jay5.png</link>
             </item>
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
+		<link></link>
             </item>
         </earnings>
     </player>
@@ -50,5 +56,4 @@
             </item>
         </earnings>
     </player>
-
 </competition>
