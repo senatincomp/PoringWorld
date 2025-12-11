@@ -43,23 +43,28 @@
             <item>
                 <name>Formal Suit</name>
                 <amount>300</amount>
+				<link></link>
             </item>
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
+				<link>Jun2.png</link>
             </item>
             <item>
                 <name>zeny</name>
                 <amount>340</amount>
+				<link>Jun3.png</link>
             </item>
             <item>
                 <name>Boosting</name>
                 <amount>750</amount>
+				<link>Jun4.png</link>
             </item>
         </earnings>
     </player>
 
 </competition>
+
 
 
 
