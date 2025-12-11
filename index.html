@@ -133,27 +133,54 @@
             border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         }
         
-        .player-icon {
-            width: 70px;
-            height: 70px;
+        .player-profile {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
+            margin-right: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid;
+            flex-shrink: 0;
+        }
+        
+        .jayson-profile {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .jhun-profile {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .player-profile:hover .profile-image {
+            transform: scale(1.1);
+        }
+        
+        .profile-fallback {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-right: 20px;
+            font-size: 2.8rem;
             font-weight: 800;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: white;
         }
         
-        .jayson-icon {
+        .jayson-fallback {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
         }
         
-        .jhun-icon {
+        .jhun-fallback {
             background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
         }
         
         .player-info {
@@ -161,17 +188,19 @@
         }
         
         .player-name {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.9rem;
+            font-weight: 800;
             margin-bottom: 5px;
         }
         
         .jayson-name {
             color: #60a5fa;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
         }
         
         .jhun-name {
             color: #f87171;
+            text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
         }
         
         .player-tagline {
@@ -625,6 +654,24 @@
         .image-link:hover {
             background: rgba(34, 197, 94, 0.25) !important;
         }
+        
+        .profile-loading {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(148, 163, 184, 0.1);
+        }
+        
+        .profile-loader {
+            border: 3px solid rgba(148, 163, 184, 0.2);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
     </style>
 </head>
 <body>
@@ -644,7 +691,11 @@
             <!-- Jayson's Card -->
             <div class="player-card">
                 <div class="player-header">
-                    <div class="player-icon jayson-icon">J</div>
+                    <div class="player-profile jayson-profile" id="jayson-profile">
+                        <div class="profile-loading">
+                            <div class="profile-loader"></div>
+                        </div>
+                    </div>
                     <div class="player-info">
                         <h2 class="player-name jayson-name">JAYSON</h2>
                         <p class="player-tagline">December 2025 earnings</p>
@@ -660,7 +711,11 @@
             <!-- Jhun's Card -->
             <div class="player-card">
                 <div class="player-header">
-                    <div class="player-icon jhun-icon">J</div>
+                    <div class="player-profile jhun-profile" id="jhun-profile">
+                        <div class="profile-loading">
+                            <div class="profile-loader"></div>
+                        </div>
+                    </div>
                     <div class="player-info">
                         <h2 class="player-name jhun-name">JHUN</h2>
                         <p class="player-tagline">December 2025 earnings</p>
@@ -734,7 +789,7 @@
         
         <div class="note">
             <p>⚠️ This competition is active throughout December 2025. The winner will be determined on December 31, 2025 based on total earnings.</p>
-            <p>Click on any earning item to view its associated image. Links are relative paths from the current site.</p>
+            <p>Profile images are loaded from XML. All images are displayed in circular format regardless of original shape.</p>
         </div>
         
         <footer>
@@ -747,7 +802,7 @@
         // XML data URL
         const XML_DATA_URL = 'https://senatincomp.github.io/PoringWorld/competition.xml';
         
-        // Base URL for relative paths - you can change this to match your site
+        // Base URL for relative paths
         const BASE_URL = 'https://senatincomp.github.io/PoringWorld/';
         
         // Item icons
@@ -759,6 +814,12 @@
             'zeny': '💰',
             'Formal Suit': '👔',
             'Boosting': '🚀'
+        };
+        
+        // Default profile images (fallback)
+        const DEFAULT_PROFILES = {
+            'jayson': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80',
+            'jhun': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80'
         };
         
         // Function to check if a URL is an image
@@ -817,6 +878,47 @@
                 .join(' ') || 'Link';
         }
         
+        // Function to load and display profile image
+        async function loadProfileImage(playerId, imageUrl) {
+            const profileContainer = document.getElementById(`${playerId}-profile`);
+            
+            return new Promise((resolve) => {
+                const img = new Image();
+                
+                img.onload = function() {
+                    // Remove loading indicator
+                    profileContainer.innerHTML = '';
+                    
+                    // Create image element with object-fit: cover for perfect circle cropping
+                    const profileImg = document.createElement('img');
+                    profileImg.className = 'profile-image';
+                    profileImg.src = imageUrl;
+                    profileImg.alt = `${playerId} profile`;
+                    profileImg.title = `View ${playerId}'s profile`;
+                    
+                    // Add click to view image in modal
+                    profileImg.addEventListener('click', function() {
+                        showImageModal(imageUrl, `${playerId.toUpperCase()}'s Profile`);
+                    });
+                    
+                    profileContainer.appendChild(profileImg);
+                    resolve(true);
+                };
+                
+                img.onerror = function() {
+                    // If image fails to load, show fallback with initial
+                    profileContainer.innerHTML = '';
+                    const fallback = document.createElement('div');
+                    fallback.className = `profile-fallback ${playerId}-fallback`;
+                    fallback.textContent = playerId.charAt(0).toUpperCase();
+                    profileContainer.appendChild(fallback);
+                    resolve(false);
+                };
+                
+                img.src = imageUrl;
+            });
+        }
+        
         // Function to fetch and parse XML data
         async function loadXMLData() {
             try {
@@ -851,10 +953,28 @@
                 const jaysonName = jaysonElement.querySelector('name').textContent;
                 const jaysonItems = jaysonElement.querySelectorAll('earnings item');
                 
+                // Get Jayson's profile image from XML
+                const jaysonProfileElement = jaysonElement.querySelector('profile');
+                const jaysonProfileUrl = jaysonProfileElement ? 
+                    resolveUrl(jaysonProfileElement.textContent.trim()) : 
+                    DEFAULT_PROFILES.jayson;
+                
                 // Get Jhun's data
                 const jhunElement = xmlDoc.querySelector('player[id="jhun"]');
                 const jhunName = jhunElement.querySelector('name').textContent;
                 const jhunItems = jhunElement.querySelectorAll('earnings item');
+                
+                // Get Jhun's profile image from XML
+                const jhunProfileElement = jhunElement.querySelector('profile');
+                const jhunProfileUrl = jhunProfileElement ? 
+                    resolveUrl(jhunProfileElement.textContent.trim()) : 
+                    DEFAULT_PROFILES.jhun;
+                
+                // Load profile images
+                await Promise.all([
+                    loadProfileImage('jayson', jaysonProfileUrl),
+                    loadProfileImage('jhun', jhunProfileUrl)
+                ]);
                 
                 // Process Jayson's earnings
                 const jaysonEarnings = [];
@@ -948,12 +1068,10 @@
                 // Show stats section
                 document.getElementById('stats-section').style.display = 'block';
                 
-                // Log loaded links for debugging
-                console.log('Loaded links from XML:');
-                [...jaysonEarnings, ...jhunEarnings].forEach(item => {
-                    if (item.links.length > 0) {
-                        console.log(`${item.name}:`, item.links.map(l => l.originalUrl));
-                    }
+                // Log loaded data for debugging
+                console.log('Profile images loaded from XML:', {
+                    jayson: jaysonProfileUrl,
+                    jhun: jhunProfileUrl
                 });
                 
             } catch (error) {
@@ -1098,53 +1216,33 @@
         }
         
         // Function to display fallback data if XML fails
-        function displayFallbackData() {
-            // Example relative paths for testing
+        async function displayFallbackData() {
+            // Load default profile images
+            await Promise.all([
+                loadProfileImage('jayson', DEFAULT_PROFILES.jayson),
+                loadProfileImage('jhun', DEFAULT_PROFILES.jhun)
+            ]);
+            
+            // Example earnings data for fallback
             const jaysonFallback = [
                 { 
                     name: "WolfCard", 
                     amount: 250, 
-                    links: [
-                        { url: resolveUrl('images/wolfcard.png'), originalUrl: 'images/wolfcard.png', isImage: true, displayName: 'WolfCard' },
-                        { url: resolveUrl('docs/wolfcard-info.html'), originalUrl: 'docs/wolfcard-info.html', isImage: false, displayName: 'Info' }
-                    ],
-                    primaryImage: resolveUrl('images/wolfcard.png'),
-                    hasImage: true,
-                    hasLinks: true
-                },
-                { 
-                    name: "FabreCard", 
-                    amount: 150, 
-                    links: [
-                        { url: resolveUrl('images/fabrecard.jpg'), originalUrl: 'images/fabrecard.jpg', isImage: true, displayName: 'FabreCard' }
-                    ],
-                    primaryImage: resolveUrl('images/fabrecard.jpg'),
-                    hasImage: true,
-                    hasLinks: true
-                },
-                { 
-                    name: "Boost", 
-                    amount: 750, 
-                    links: [
-                        { url: resolveUrl('services/boost.html'), originalUrl: 'services/boost.html', isImage: false, displayName: 'Service' }
-                    ],
-                    primaryImage: `https://via.placeholder.com/400x300/3b82f6/ffffff?text=Boost`,
+                    links: [],
+                    primaryImage: `https://via.placeholder.com/400x300/3b82f6/ffffff?text=WolfCard`,
                     hasImage: false,
-                    hasLinks: true
+                    hasLinks: false
                 },
                 // ... more items
             ];
             
-            const jaysonTotal = jaysonFallback.reduce((sum, item) => sum + item.amount, 0);
-            const jhunTotal = 2140; // Example total
+            const jaysonTotal = 2860;
+            const jhunTotal = 2140;
             
             displayPlayerData('jayson', 'Jayson', jaysonFallback, jaysonTotal);
+            displayPlayerData('jhun', 'Jhun', [], jhunTotal);
             
-            // Create empty Jhun data for fallback
-            const jhunFallback = [];
-            displayPlayerData('jhun', 'Jhun', jhunFallback, jhunTotal);
-            
-            updateCompetitionStats(jaysonTotal, jhunTotal, jaysonFallback.length, 4);
+            updateCompetitionStats(jaysonTotal, jhunTotal, 6, 4);
             calculateDecember2025Progress();
             setupImageModal();
             
