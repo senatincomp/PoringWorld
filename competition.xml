@@ -12,7 +12,7 @@
                 <amount>150</amount>
             </item>
             <item>
-                <name>Boost</name>
+                <name>Boosting</name>
                 <amount>750</amount>
             </item>
             <item>
@@ -24,7 +24,7 @@
                 <amount>300</amount>
             </item>
             <item>
-                <name>BOost</name>
+                <name>Boosting</name>
                 <amount>750</amount>
             </item>
         </earnings>
@@ -50,4 +50,5 @@
             </item>
         </earnings>
     </player>
+
 </competition>
