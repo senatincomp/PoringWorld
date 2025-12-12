@@ -18,11 +18,96 @@
             min-height: 100vh;
             padding: 20px;
             background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+            cursor: none; /* Hide default cursor */
+            overflow-x: hidden;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Currency Tray Effect */
+        .currency-tray {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+        
+        .currency-particle {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0;
+            animation: floatUp 1.5s ease-out forwards;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+            pointer-events: none;
+        }
+        
+        .currency-particle.jayson {
+            color: #60a5fa;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        }
+        
+        .currency-particle.jhun {
+            color: #f87171;
+            text-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx, 0), var(--ty, -100px)) rotate(var(--r, 0deg)) scale(0.4);
+                opacity: 0;
+            }
+        }
+        
+        .cursor-follow {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: screen;
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: trailFade 0.8s ease-out forwards;
+        }
+        
+        @keyframes trailFade {
+            0% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
         }
         
         header {
@@ -33,6 +118,8 @@
             border-radius: 20px;
             border: 1px solid rgba(148, 163, 184, 0.1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
         
         .year-badge {
@@ -119,6 +206,9 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
             min-height: 400px;
+            position: relative;
+            z-index: 2;
+            cursor: default;
         }
         
         .player-card:hover {
@@ -143,6 +233,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             border: 3px solid;
             flex-shrink: 0;
+            cursor: pointer;
         }
         
         .jayson-profile {
@@ -417,7 +508,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            z-index: 10000;
             justify-content: center;
             align-items: center;
         }
@@ -621,6 +712,8 @@
             cursor: pointer;
             margin-top: 20px;
             transition: transform 0.3s ease;
+            position: relative;
+            z-index: 3;
         }
         
         .refresh-button:hover {
@@ -672,9 +765,71 @@
             height: 30px;
             animation: spin 1s linear infinite;
         }
+        
+        .currency-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .currency-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .currency-toggle.off {
+            background: linear-gradient(to right, #6b7280, #9ca3af);
+        }
+        
+        .cursor-hint {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.9);
+            color: #cbd5e1;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            max-width: 200px;
+            z-index: 100;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .cursor-hint.fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
     </style>
 </head>
 <body>
+    <!-- Currency Tray Effect -->
+    <div class="currency-tray" id="currency-tray"></div>
+    <div class="cursor-follow" id="cursor-follow"></div>
+    
+    <!-- Currency Toggle Button -->
+    <button class="currency-toggle" id="currency-toggle">💰 Currency Effect ON</button>
+    
     <div class="container">
         <header>
             <div class="year-badge">DECEMBER 2025 COMPETITION</div>
@@ -689,7 +844,7 @@
         
         <div class="dashboard">
             <!-- Jayson's Card -->
-            <div class="player-card">
+            <div class="player-card" id="jayson-card">
                 <div class="player-header">
                     <div class="player-profile jayson-profile" id="jayson-profile">
                         <div class="profile-loading">
@@ -709,7 +864,7 @@
             </div>
             
             <!-- Jhun's Card -->
-            <div class="player-card">
+            <div class="player-card" id="jhun-card">
                 <div class="player-header">
                     <div class="player-profile jhun-profile" id="jhun-profile">
                         <div class="profile-loading">
@@ -789,7 +944,7 @@
         
         <div class="note">
             <p>⚠️ This competition is active throughout December 2025. The winner will be determined on December 31, 2025 based on total earnings.</p>
-            <p>Profile images are loaded from XML. All images are displayed in circular format regardless of original shape.</p>
+            <p>Move your cursor around to see the currency tray effect. Toggle the effect using the button in the bottom right.</p>
         </div>
         
         <footer>
@@ -821,6 +976,17 @@
             'jayson': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80',
             'jhun': 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80'
         };
+        
+        // Currency effect configuration
+        let currencyEffectEnabled = true;
+        let lastEmitTime = 0;
+        const emitInterval = 100; // ms between currency emits
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorHintShown = false;
+        
+        // Currency symbols
+        const CURRENCY_SYMBOLS = ['💰', '💵', '💸', '💎', '💳', '🏦', '💲', '🪙', '💶', '💷', '💴'];
         
         // Function to check if a URL is an image
         function isImageUrl(url) {
@@ -917,6 +1083,167 @@
                 
                 img.src = imageUrl;
             });
+        }
+        
+        // Function to create a currency particle
+        function createCurrencyParticle(x, y, playerType) {
+            if (!currencyEffectEnabled) return;
+            
+            const tray = document.getElementById('currency-tray');
+            const particle = document.createElement('div');
+            particle.className = `currency-particle ${playerType}`;
+            
+            // Random currency symbol
+            const symbol = CURRENCY_SYMBOLS[Math.floor(Math.random() * CURRENCY_SYMBOLS.length)];
+            particle.textContent = symbol;
+            
+            // Random movement
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 50 + Math.random() * 100;
+            const tx = Math.cos(angle) * distance;
+            const ty = -Math.abs(Math.sin(angle) * distance) - 50;
+            const rotation = (Math.random() - 0.5) * 180;
+            
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            particle.style.setProperty('--r', `${rotation}deg`);
+            
+            // Random size
+            const size = 0.8 + Math.random() * 0.8;
+            particle.style.fontSize = `${size}rem`;
+            
+            // Position at cursor
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            tray.appendChild(particle);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (particle.parentNode === tray) {
+                    tray.removeChild(particle);
+                }
+            }, 1500);
+        }
+        
+        // Function to create cursor trail effect
+        function createCursorTrail(x, y) {
+            if (!currencyEffectEnabled) return;
+            
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = `${x}px`;
+            trail.style.top = `${y}px`;
+            
+            document.body.appendChild(trail);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (trail.parentNode === document.body) {
+                    document.body.removeChild(trail);
+                }
+            }, 800);
+        }
+        
+        // Function to update cursor follow effect
+        function updateCursorFollow(x, y) {
+            const cursorFollow = document.getElementById('cursor-follow');
+            cursorFollow.style.left = `${x}px`;
+            cursorFollow.style.top = `${y}px`;
+        }
+        
+        // Function to handle mouse movement
+        function handleMouseMove(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Update cursor follow effect
+            updateCursorFollow(mouseX, mouseY);
+            
+            // Emit currency particles at interval
+            const currentTime = Date.now();
+            if (currentTime - lastEmitTime > emitInterval && currencyEffectEnabled) {
+                // Determine which player's currency to emit based on cursor position
+                const jaysonCard = document.getElementById('jayson-card');
+                const jhunCard = document.getElementById('jhun-card');
+                let playerType = 'jayson';
+                
+                if (jaysonCard && jhunCard) {
+                    const jaysonRect = jaysonCard.getBoundingClientRect();
+                    const jhunRect = jhunCard.getBoundingClientRect();
+                    
+                    // Check if cursor is over Jayson's card
+                    if (mouseX >= jaysonRect.left && mouseX <= jaysonRect.right &&
+                        mouseY >= jaysonRect.top && mouseY <= jaysonRect.bottom) {
+                        playerType = 'jayson';
+                    }
+                    // Check if cursor is over Jhun's card
+                    else if (mouseX >= jhunRect.left && mouseX <= jhunRect.right &&
+                             mouseY >= jhunRect.top && mouseY <= jhunRect.bottom) {
+                        playerType = 'jhun';
+                    }
+                    // Random if not over either card
+                    else {
+                        playerType = Math.random() > 0.5 ? 'jayson' : 'jhun';
+                    }
+                }
+                
+                // Create currency particle
+                createCurrencyParticle(mouseX, mouseY, playerType);
+                
+                // Create trail effect occasionally
+                if (Math.random() > 0.7) {
+                    createCursorTrail(mouseX, mouseY);
+                }
+                
+                lastEmitTime = currentTime;
+            }
+            
+            // Show cursor hint once
+            if (!cursorHintShown) {
+                showCursorHint();
+                cursorHintShown = true;
+            }
+        }
+        
+        // Function to show cursor hint
+        function showCursorHint() {
+            const hint = document.createElement('div');
+            hint.className = 'cursor-hint';
+            hint.innerHTML = '💡 <strong>Currency Tray Effect</strong><br>Move cursor to see currency particles';
+            hint.style.left = `${mouseX + 20}px`;
+            hint.style.top = `${mouseY - 60}px`;
+            
+            document.body.appendChild(hint);
+            
+            // Remove hint after 5 seconds
+            setTimeout(() => {
+                hint.classList.add('fade-out');
+                setTimeout(() => {
+                    if (hint.parentNode === document.body) {
+                        document.body.removeChild(hint);
+                    }
+                }, 500);
+            }, 5000);
+        }
+        
+        // Function to toggle currency effect
+        function toggleCurrencyEffect() {
+            currencyEffectEnabled = !currencyEffectEnabled;
+            const toggleBtn = document.getElementById('currency-toggle');
+            
+            if (currencyEffectEnabled) {
+                toggleBtn.textContent = '💰 Currency Effect ON';
+                toggleBtn.classList.remove('off');
+                document.body.style.cursor = 'none';
+            } else {
+                toggleBtn.textContent = '💤 Currency Effect OFF';
+                toggleBtn.classList.add('off');
+                document.body.style.cursor = 'default';
+                
+                // Hide cursor follow when effect is off
+                document.getElementById('cursor-follow').style.display = 'none';
+            }
         }
         
         // Function to fetch and parse XML data
@@ -1068,12 +1395,6 @@
                 // Show stats section
                 document.getElementById('stats-section').style.display = 'block';
                 
-                // Log loaded data for debugging
-                console.log('Profile images loaded from XML:', {
-                    jayson: jaysonProfileUrl,
-                    jhun: jhunProfileUrl
-                });
-                
             } catch (error) {
                 console.error('Error loading XML data:', error);
                 document.getElementById('error-message').style.display = 'block';
@@ -1223,23 +1544,10 @@
                 loadProfileImage('jhun', DEFAULT_PROFILES.jhun)
             ]);
             
-            // Example earnings data for fallback
-            const jaysonFallback = [
-                { 
-                    name: "WolfCard", 
-                    amount: 250, 
-                    links: [],
-                    primaryImage: `https://via.placeholder.com/400x300/3b82f6/ffffff?text=WolfCard`,
-                    hasImage: false,
-                    hasLinks: false
-                },
-                // ... more items
-            ];
-            
             const jaysonTotal = 2860;
             const jhunTotal = 2140;
             
-            displayPlayerData('jayson', 'Jayson', jaysonFallback, jaysonTotal);
+            displayPlayerData('jayson', 'Jayson', [], jaysonTotal);
             displayPlayerData('jhun', 'Jhun', [], jhunTotal);
             
             updateCompetitionStats(jaysonTotal, jhunTotal, 6, 4);
@@ -1307,6 +1615,14 @@
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
+            // Setup mouse tracking for currency effect
+            document.addEventListener('mousemove', handleMouseMove);
+            
+            // Setup currency toggle button
+            const toggleBtn = document.getElementById('currency-toggle');
+            toggleBtn.addEventListener('click', toggleCurrencyEffect);
+            
+            // Load competition data
             loadXMLData();
             
             // Add refresh button
