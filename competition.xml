@@ -38,6 +38,7 @@
                 <name>zeny</name>
                 <amount>500</amount>
 				<link>Jay7.png</link>
+				<link>Jay7a.png</link>
             </item>
         </earnings>
     </player>
@@ -69,6 +70,7 @@
     </player>
 
 </competition>
+
 
 
 
