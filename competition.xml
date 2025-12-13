@@ -34,6 +34,11 @@
                 <amount>750</amount>
 				<link>Jay6.jpg</link>
             </item>
+			<item>
+                <name>zeny</name>
+                <amount>500</amount>
+				<link>Jay7.png</link>
+            </item>
         </earnings>
     </player>
     <player id="jhun">
@@ -64,6 +69,7 @@
     </player>
 
 </competition>
+
 
 
 
